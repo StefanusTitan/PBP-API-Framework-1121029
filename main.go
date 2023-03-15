@@ -19,6 +19,7 @@ func main() {
 		}
 		return false, nil
 	}))
+	g.GET("/allusers", controllers.GetAllUserDetails)
 	e.GET("/users/:id", controllers.GetAUserDetail)
 	e.POST("/users", controllers.InsertNewUser)
 	e.PUT("/users", controllers.UpdateAUser)
