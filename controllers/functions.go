@@ -113,3 +113,22 @@ func DeleteUser(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, response)
 	}
 }
+
+func GetAllUserDetails(c echo.Context) error {
+	db := gormConn()
+	var users []model.Users
+
+	getUsers := db.Find(&users)
+
+	var response model.UsersResponse
+	if getUsers.Error == nil {
+		response.Status = http.StatusOK
+		response.Message = "Success"
+		response.Data = users
+		return c.JSON(http.StatusOK, response)
+	} else {
+		response.Status = http.StatusInternalServerError
+		response.Message = "Failed"
+		return c.JSON(http.StatusInternalServerError, response)
+	}
+}
