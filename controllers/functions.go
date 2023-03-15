@@ -72,7 +72,7 @@ func UpdateAUser(c echo.Context) error {
 	if user.UserName == "" {
 		user.UserName = beforeUser.UserName
 	} else if user.UserEmail == "" {
-		user.UserEmail = beforeUser.UserName
+		user.UserEmail = beforeUser.UserEmail
 	} else if user.UserCountry == "" {
 		user.UserCountry = beforeUser.UserCountry
 	} else if user.UserPassword == "" {
