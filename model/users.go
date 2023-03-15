@@ -14,3 +14,9 @@ type Response struct {
 	Message string `json:"message"`
 	Data    Users  `json:"data"`
 }
+
+type UsersResponse struct {
+	Status  int     `json:"status"`
+	Message string  `json:"message"`
+	Data    []Users `json:"data"`
+}
