@@ -3,7 +3,9 @@ package main
 import (
 	"crypto/subtle"
 	"echoexplore/controllers"
+	"net/http"
 
+	echojwt "github.com/labstack/echo-jwt/v4"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -19,8 +21,26 @@ func main() {
 		}
 		return false, nil
 	}))
+
+	g2 := e.Group("jwt")
+	g2.Use(echojwt.JWT([]byte("secret")))
+
 	g.GET("/allusers", controllers.GetAllUserDetails)
 	e.GET("/users/:id", controllers.GetAUserDetail)
+
+	e.Use(func(next echo.HandlerFunc) echo.HandlerFunc {
+		return func(c echo.Context) error {
+			// Logic to verify or check something
+			// check
+			// IF .....
+			// For invalid credentials
+			return echo.NewHTTPError(http.StatusUnauthorized, "Please provide valid credentials")
+
+			// For valid credentials call next
+			// return next(c)
+		}
+	})
+
 	e.POST("/users", controllers.InsertNewUser)
 	e.PUT("/users", controllers.UpdateAUser)
 	e.DELETE("/users", controllers.DeleteUser)
