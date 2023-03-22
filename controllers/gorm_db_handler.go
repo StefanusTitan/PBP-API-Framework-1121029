@@ -11,5 +11,6 @@ func gormConn() *gorm.DB {
 	if err != nil {
 		panic(err.Error())
 	}
+	print("")
 	return db
 }
