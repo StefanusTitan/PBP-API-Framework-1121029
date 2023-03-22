@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"fmt"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -11,5 +13,6 @@ func gormConn() *gorm.DB {
 	if err != nil {
 		panic(err.Error())
 	}
+	fmt.Print("")
 	return db
 }
