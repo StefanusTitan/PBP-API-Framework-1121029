@@ -132,3 +132,5 @@ func GetAllUserDetails(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, response)
 	}
 }
+
+func dummyFunc() {}
