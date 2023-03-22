@@ -2,9 +2,9 @@ name: GolangCI-Lint
 
 on:
   pull_request:
-      branches:
-        - master
-        - main
+    branches:
+      - master
+      - main
 
 permissions:
   contents: read
