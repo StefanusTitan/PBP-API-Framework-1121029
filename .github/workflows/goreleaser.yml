@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - run: git tag v4
+      - run: git tag v5
       - uses: actions/setup-go@v4
         with:
           go-version: stable
